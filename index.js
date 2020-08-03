@@ -42,6 +42,6 @@ app.get('/admin/:id', (req, res) => { adminId.handleAdminID(req, res, db)});
 app.put('/ride-total', (req, res) => { rideTotal.rideTotal(req, res, db)});
 
 
-app.listen(connectionString, () => {
-    console.log(`App running on port: ${connectionString}`)
+app.listen(this.connectionString, () => {
+    console.log(`App running on port: ${this.connectionString}`)
 })
