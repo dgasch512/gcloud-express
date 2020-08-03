@@ -31,7 +31,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 
-
+app.get('/', (req,res) => { res.send('it is working')})
 app.post('/login', (req,res) => { login.handleLogin(req, res, db, bcrypt)});
 app.post('/register', (req,res) => { register.handleRegister(req, res, db, bcrypt)});
 app.get('/blog', (req,res) => { blog.handleBlogGet(req, res, db)});
