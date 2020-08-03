@@ -17,10 +17,8 @@ const rideTotal = require('./api/rideTotal');
 const db = knex({
   client: 'pg',
   connection: {
-    host : 'postgresql-sinuous-34081',
-    user : 'gaschdammit',
-    password : '',
-    database : 'tipsy-taxi'
+    host : process.env.DATABASE_URL,
+    ssl: true
   }
 });
 
