@@ -5,6 +5,9 @@ const handleBlogGet = (req, res, db) => {
     .then(stories => {
       res.json(stories)
     })
+    .catch(err, (req, res) => {
+      console.log('This is it')
+    })
 }
 
 
