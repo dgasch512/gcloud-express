@@ -5,6 +5,7 @@ const cors = require('cors');
 const path = require('path');
 const knex = require('knex');
 
+
 const register = require('./api/register');
 const login = require('./api/login');
 const blog = require('./api/blog');
@@ -28,20 +29,22 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+// app.use(express.static(path.join(__dirname, 'client/build')));
 
-
+app.options('/', cors())
 app.get('/', (req,res) => { res.send('it is working')})
 app.post('/login', (req,res) => { login.handleLogin(req, res, db, bcrypt)});
 app.post('/register', (req,res) => { register.handleRegister(req, res, db, bcrypt)});
+app.options('/blog', cors())
 app.get('/blog', (req,res) => { blog.handleBlogGet(req, res, db)});
 app.post('/request', (req, res) => { request.handleRequest(req, res, db)});
 app.post('/artpost', (req, res) => { postart.handlePostArt(req, res, db)});
+app.options('/admin', cors())
 app.get('/admin', (req, res) => { admin.handleRidesGet(req, res, db)});
 app.get('/admin/:id', (req, res) => { adminId.handleAdminID(req, res, db)});
 app.put('/ride-total', (req, res) => { rideTotal.rideTotal(req, res, db)});
 
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log(`App running on port: ${process.env.PORT}`)
+app.listen(port, () => {
+    console.log(`App running on port: ${port}`)
 })
