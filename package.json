@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "start:dev": "nodemon index.js",
+    "dev": "react-scripts start",
+    "start": "serve -s build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
