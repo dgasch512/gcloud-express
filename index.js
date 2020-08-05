@@ -52,7 +52,7 @@ app.options('/', cors())
 app.get('/', (req,res) => { res.send('it is working')})
 app.post('/login', (req,res) => { login.handleLogin(req, res, db, bcrypt)});
 app.post('/register', (req,res) => { register.handleRegister(req, res, db, bcrypt)});
-app.options('/blog', cors())
+app.options('/blog', cors());
 app.get('/blog', (req,res) => { blog.handleBlogGet(req, res, db)});
 app.post('/request', (req, res) => { request.handleRequest(req, res, db)});
 app.post('/artpost', (req, res) => { postart.handlePostArt(req, res, db)});
