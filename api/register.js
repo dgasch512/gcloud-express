@@ -16,8 +16,8 @@ const handleRegister = (req, res, db, bcrypt) => {
         return trx('drivers')
           .returning('*')
           .insert({
-            email: loginEmail[0],
             name: name,
+            email: loginEmail[0],
             registered: new Date()
           })
           .then(driver => {
@@ -27,7 +27,7 @@ const handleRegister = (req, res, db, bcrypt) => {
       .then(trx.commit)
       .catch(trx.rollback)
     })
-      .catch(err => res.status(404).json('unable to register'))    
+      .catch(err => res.status(400).json('unable to register'))    
   }
 
 
