@@ -15,24 +15,24 @@ const admin = require('./api/admin');
 const adminId = require('./api/adminId');
 const rideTotal = require('./api/rideTotal');
 
-// const db = knex({
-//   client: 'pg',
-//   connection: {
-//     connectionString : process.env.DATABASE_URL,
-//     ssl: true
-//   }
-// });
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 const db = knex({
   client: 'pg',
   connection: {
-    host : 'ec2-23-22-156-110.compute-1.amazonaws.com',
-    user : 'cgnxwzxluttpkj',
-    password : 'cd1500ab612a546f9af5e019158eb4104045da5827155566705de354632f7f16',
-    database : 'dk9agg1b3hol7',
+    connectionString : process.env.DATABASE_URL,
     ssl: true
   }
 });
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+// const db = knex({
+//   client: 'pg',
+//   connection: {
+//     host : 'ec2-23-22-156-110.compute-1.amazonaws.com',
+//     user : 'cgnxwzxluttpkj',
+//     password : 'cd1500ab612a546f9af5e019158eb4104045da5827155566705de354632f7f16',
+//     database : 'dk9agg1b3hol7',
+//     ssl: true
+//   }
+// });
 
 
 const port = process.env.PORT || 4000;
