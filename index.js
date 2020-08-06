@@ -49,7 +49,7 @@ app.use(cors());
 
 
 app.options('/', cors())
-app.get('/', (req,res) => { res.send(db.drivers)})
+app.get('/', (req,res) => { res.send('hellooo')})
 app.post('/login', (req,res) => { login.handleLogin(req, res, db, bcrypt)});
 app.post('/register', (req,res) => { register.handleRegister(req, res, db, bcrypt)});
 app.options('/blog', cors());
