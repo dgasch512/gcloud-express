@@ -1,6 +1,7 @@
 
 const handleBlogGet = (req, res, db) => {
-  db.select('*').from('stories')
+  db('stories')
+    .returning('*')
     .then(data => {
       if (data.length) {
        res.json(data) 
