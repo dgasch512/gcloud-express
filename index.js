@@ -15,24 +15,24 @@ const admin = require('./api/admin');
 const adminId = require('./api/adminId');
 const rideTotal = require('./api/rideTotal');
 
-// const db = knex({
-//   client: 'pg',
-//   connection: {
-//     connectionString : process.env.DATABASE_URL,
-//     ssl: true
-//   }
-// });
-
 const db = knex({
   client: 'pg',
   connection: {
-    host : 'ec2-18-211-48-247.compute-1.amazonaws.com',
-    user : 'hstgbiqbfaxwxt',
-    password : '51b1445f8385ff20353e8900443659a331529818e032f4e1fa97c468d83201e1',
-    database : 'dbg1qhf7gfbev5',
+    connectionString : process.env.DATABASE_URL,
     ssl: true
   }
 });
+
+// const db = knex({
+//   client: 'pg',
+//   connection: {
+//     host : 'ec2-18-211-48-247.compute-1.amazonaws.com',
+//     user : 'hstgbiqbfaxwxt',
+//     password : '51b1445f8385ff20353e8900443659a331529818e032f4e1fa97c468d83201e1',
+//     database : 'dbg1qhf7gfbev5',
+//     ssl: true
+//   }
+// });
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 const port = process.env.PORT || 4000;
@@ -53,7 +53,7 @@ app.get('/', (req,res) => { res.send('hellooo')})
 app.post('/login', (req,res) => { login.handleLogin(req, res, db, bcrypt)});
 app.post('/register', (req,res) => { register.handleRegister(req, res, db, bcrypt)});
 app.options('/blog', cors());
-app.get('/blog', (req,res) => { blog.handleBlogGet(req, res, db)});
+app.get('/blog', (req, res) => { blog.handleBlogGet(req, res, db)});
 app.post('/request', (req, res) => { request.handleRequest(req, res, db)});
 app.post('/artpost', (req, res) => { postart.handlePostArt(req, res, db)});
 app.options('/admin', cors())
